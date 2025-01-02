@@ -1,0 +1,118 @@
+O que diabos é o React.js?
+ 
+O React.js é uma framework (aula 1 de como explicar sem explicar) para aplicações de front-end. Basicamente ele é um conjunto de ferramentas que atuam de forma a permitir e facilitar o desenvolvimento de softwares.
+
+De forma análoga: Imagine que você está entrando em uma nova oficina de ferraria e precisa fazer um capacete com um chifre de metal (o cliente pediu, OK?! Não atrapalha o meu exemplo.) Ao rondar o pátio de ferramentas base você percebe que não existe uma bigorna com o chifre para você colocar a demanda do chifre do capacete do cliente. O que você faz?
+
+Ao invés de você começar do zero uma bigorna para fazer isso, você compra uma bigorna com o chifre para conseguir dar esse efeito de chifre no capacete do seu cliente. 
+
+Basicamente o React.js é essa segunda bigorna com essa ferramenta que te auxiliaria a desenvolver melhor essa demanda do seu cliente. Ao invés de você começar uma nova ferramenta do zero na sua oficina, você pode pegar uma já pronta. 
+
+O que é um framework?
+
+Framework são estruturas auxiliares à linguagem de código, não propriamente uma linguagem de programação. Eles servem para entregar um conjunto de ferramentas específicos para facilitar o desenvolvimento de alguma aplicação.
+
+Primeiro problema detectado: No dia de 02/01/2025 o link copiado conforme a orientação apresentou alguns erros. A solução foi copiar o texto do forum para sanar essa dúvida.
+
+----
+
+Sintaxe do JSX
+
+Basicamente é a mesma sintaxe de uma função do JavaScript. A única difereça é que, como já existem palavras chave no JavaScript algumas serão diferentes. O primeiro caso que eu peguei até o momento é o class. Aqui usaremoso o className para referenciar a classe do html para estilizar com o apoio do CSS.
+
+Exemplo:
+
+function EscreveAlgoNaTela() {
+    return (
+        <div className="nome-da-classe">
+        <h1>Aqui teremos algo escrito</h1>
+        <h2>Podemos ter algo escrito aqui também, mas usando outra TAG HTML</h2>
+        <p>Aqui podemos ter outra opção de texto escrito.</p>
+        <img src="caminho-da-imagem.extensão" alt="Aqui podemos ter uma imagem">
+        </div>
+    )
+}
+
+Observe que dentro do campo de return ali possuímos diversos elementos HTML com tags h1, h2, p e img. 
+Basicamente será assim que o componente irá se comportar com o uso do REACT.
+
+---
+E como jogar isso na tela?? 
+
+Quando falamos de gerar algo na tela do computador, o verbo para exibir essas imagens é renderizar. Isso é importante pois a palavra chafe para isso é RENDER. 
+Ok... Mas como fazer?
+
+Para isso iremos preparar o terreno para iniciar.
+
+iremos criar uma div com um ID e dentro dela iremos chamar elemento rensponsável por fazer isso...
+
+O comando é ReactDOM.createRoot(document.getElementById("root")).render(<nome-da-função />);
+
+Ok... vamos por partes...
+A base do comando me fala o seguinte: ReactDOM.createRoot() dentro do parênteseses eu vou colocar algum lugar para ele começar a escrever algo de maneira ordenada e padronizada. Um exemplo seria a div com o id "root" que foi criada no HTML. Nesse momento é fácil visualizar.
+Blz. Ali é o terreno que foi criado. E o que foi plantado nele?? Até esse ponto da explicação: Nada.
+
+Depois de usar o método JavaScript para pegar a div, eu dou o próximo comando para ele que será o ".render(<nome-da-função/>)"
+
+Agora sim ele irá procurar onde essa função foi declarada e executar o que estiver ali dentro.
+
+---
+Agora que eu aprendi a usar esses elementos, como faço para deixar o código mais limpo e menos repetitivo? 
+
+Vamos à ideia de funções que podem ser chamadas diversas vezes.
+
+function Noticia() {
+    <h2>Manchete</h2>
+    <img src="caminho-da-imagem" />
+    <p>Resumo da manchete citada bem detalhado </p>
+}
+
+Imagine que você quer imprimir essa mensagem diversas vezes só que com vários atributos vários itens diferentes ali. Ao invés de ficar fazendo notícia por notícia na unha e declarando todas elas nesse formato, o que iremos fazer é:
+1. Identificar os pontos repetitivos e colocar em evidência com chaves {}
+2. Chamar a função com os elementos em chave e alterar a função base para fazer sentido.
+2.1. Alterar a forma que os campos para evitar repetição de código.
+
+O que antes era assim:
+function Noticia1() {
+    <h2>Manchete 1</h2>
+    <img src="caminho-da-imagem 1" />
+    <p>Resumo da manchete citada bem detalhado 1 </p>
+}
+function Noticia2() {
+    <h2>Manchete 2</h2>
+    <img src="caminho-da-imagem 2" />
+    <p>Resumo da manchete citada bem detalhado 2</p>
+}
+
+Passa a ser assim:
+
+<Noticia manchete="Manchete1" caminho= "caminho-da-imagem1" resumo="Resumo da manchete citada bem detalhado 1" />
+
+<Noticia manchete="Manchete2" caminho="caminho-da-imagem2" resumo="Resumo da manchete citada bem detalhada 2"/>
+
+E na função?? O que muda?
+
+function Noticia( {manchete, caminho, texto}) {
+    <h2> {manchete} </h2>
+    <img src={caminho}/>
+    <p>{texto}</p>
+}
+
+Isso facilita bastante e evita repetição de código e facilita a leitura em uma manutenção de código e refatoração.
+
+Outra forma é usar o seguinte caso:
+function Botao({ children }) {
+        return (
+          <button type="submit" className="form__botao">
+            {children}
+          </button>
+        );
+      }
+
+      <Botao>Login</Botao>
+
+      O resultado será um botão com o texto Login dentro.
+
+
+---- React.useState() - O que diabos é isso??
+
