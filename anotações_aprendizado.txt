@@ -44,7 +44,7 @@ Ok... Mas como fazer?
 
 Para isso iremos preparar o terreno para iniciar.
 
-iremos criar uma div com um ID e dentro dela iremos chamar elemento rensponsável por fazer isso...
+Iremos criar uma div com um ID e dentro dela iremos chamar elemento rensponsável por fazer isso...
 
 O comando é ReactDOM.createRoot(document.getElementById("root")).render(<nome-da-função />);
 
